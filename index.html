@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Portfolio</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+  
+    <style>
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Navbar styling */
+        .navbar {
+            background: #2C3E50;
+        }
+
+        .navbar-brand {
+            color: #FFF;
+            font-weight: bold;
+        }
+
+        .nav-link {
+            color: #FFF !important;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #F39C12 !important;
+        }
+
+        /* Section styling */
+        .content-section {
+            display: none;
+            padding: 60px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        #home {
+            display: block;
+        }
+
+        h2, h4 {
+            color: #2C3E50;
+            font-weight: bold;
+        }
+
+        /* Background Colors */
+        #home { background: #F4F6F7; }
+        #about { background: #D5F5E3; }
+        #skill {  background: #F4F6F7;}
+        #project { background: #D5F5E3; }
+        #experience {  background: #F4F6F7; }
+        #contact {background: #D5F5E3; }
+
+        /* Buttons */
+        .btn-primary {
+            background: #2980B9;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background: #1F618D;
+        }
+
+        /* Contact Styling */
+        .contact-links a {
+            text-decoration: none;
+            font-size: 18px;
+            color: #2C3E50;
+        }
+
+        .contact-links a:hover {
+            color: #F39C12;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Anbulalitha Gopalakrishnan</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item mx-3">
+                        <a class="nav-link" href="#" onclick="showSection('home')">Home</a>
+                    </li>
+                    <li class="nav-item mx-3">
+                        <a class="nav-link" href="#" onclick="showSection('about')">About</a>
+                    </li>
+                    <li class="nav-item mx-3">
+                        <a class="nav-link" href="#" onclick="showSection('skill')">Skill</a>
+                    </li>
+                    <li class="nav-item mx-3">
+                        <a class="nav-link" href="#" onclick="showSection('project')">Projects</a>
+                    </li>
+
+                    <li class="nav-item mx-3">
+                        <a class="nav-link" href="#" onclick="showSection('experience')">Experience</a>
+                    </li>
+                    <li class="nav-item mx-3">
+                        <a class="nav-link" href="#" onclick="showSection('contact')">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sections -->
+    <div id="home" class="container mt-5 content-section">
+        <!-- <img src="./Anbulalitha.jpg" alt="Profile Picture" class="img-fluid rounded-circle" width="100"> -->
+        <h4>HOME</h4>
+       
+        <p>Welcome to my portfolio! I’m <b>Anbulalitha Gopalakrishanan</b>, a passionate Software Engineer, Web Developer dedicated to creating innovative and impactful solutions. With expertise in <b>Java, HTML, CSS, C#</b> and modern frameworks, I craft functional, user-friendly, and visually appealing experiences..</p>
+    </div>
+
+    <div id="about" class="container mt-5 content-section">
+        <h4>ABOUT</h4>
+        <p>
+        With a strong foundation in programming, problem-solving, and design, I bring a unique perspective to every project. From developing interactive websites to optimizing high-performance applications, I strive to push boundaries and create meaningful digital experiences.
+    </p>
+    </div>
+
+    <div id="skill" class="container mt-5 content-section">
+        <h4>SKILLS</h4>
+        <p>🔹<b>Programming Languages</b>: Java, C#, HTML, CSS, JavaScript<br>
+           🔹<b> Frameworks & Tools</b>: React, Bootstrap<br>
+           🔹 <b>Database Management</b>: MySQL, SQL, MongoDB<br>
+           🔹<b>Soft Skills</b> :<br>
+           <b>Problem-Solving</b>  – Ability to analyze situations and find effective solutions. <br>
+
+          <b> Adaptability</b> – Flexibility to adjust to new situations and challenges. <br>
+           
+           <b>Leadership</b> – Guiding and motivating teams with confidence. <br>
+           
+           <b>Time Management </b>– Efficiently prioritizing tasks and meeting deadlines. <br>
+           
+           <b>Creativity</b> – Thinking outside the box to generate innovative ideas. <br>
+           
+           <b>Emotional Intelligence</b> – Understanding and managing emotions in professional interactions. <br>
+           
+          <b>Conflict Resolution </b> – Handling disagreements in a constructive way. <br>
+           
+           <b>Resilience</b> – Staying determined and focused even under pressure.</p>
+    </div>
+
+    <div id="project" class="container mt-5 content-section">
+        <b>Employee Management System:</b> <br>
+        A comprehensive system developed to streamline employee management, salary processing, attendance tracking, and information handling. This project ensures efficiency, security, and effective data-driven decision-making.
+        <br><br>
+       <b>Key Features:</b> <br>
+        ✅ Secure Login System – Robust authentication to protect sensitive employee data.<br>
+         ✅ Employee Details Management – Store and manage personnel records efficiently. <br>
+         ✅ Payroll Processing – Automated salary calculations with integrated payment tracking. <br>
+         ✅ Attendance Tracking – Maintain records of employee attendance and leave status. <br>
+         ✅ RDLC Reports Integration – Generate detailed reports for employee information, payroll, and attendance, enabling seamless analysis.<br> ✅ Information Management – Centralized system for handling employee-related data, ensuring structured and organized workflow.<br><br>
+        
+       
+       <b>Technologies Used:</b>  <br>
+        💻<b> Web Forms</b> – User-friendly interface for streamlined operations.
+        <br> ⚙️<b> .NET & C#</b> – Backend development ensuring performance and security.
+        <br> 📊 <b>SQL Database</b> – Efficient data storage and retrieval for employee records<br>
+        <!-- <button class="btn btn-primary mt-3">View Project</button> -->
+        <a href="https://github.com/Anbulalitha/EMP-system" target="_blank">
+            <button class="btn btn-primary mt-3">View Project</button>
+        </a>
+        
+    </div>
+
+    <div id="experience" class="container mt-5 content-section">
+        <h4>EXPERIENCE</h4>
+       
+        <p>During my time as a .NET Developer, I had the opportunity to work extensively with ASP.NET, where I developed a full-fledged project integrating PL/SQL databases, HTML, CSS, and JavaScript. This experience allowed me to strengthen my technical expertise while gaining a deeper understanding of controllers, data management, and application logic.
+<br>
+            <b>Key Contributions & Learnings:</b><br>
+           <b>ASP.NET Development:</b>  Built and maintained a robust web application using the ASP.NET framework. <br>
+            
+          <b>PL/SQL Integration:</b>   Designed and implemented database structures, optimized queries, and managed data efficiently. <br>
+            
+          <b> Frontend Technologies:</b>  Developed dynamic user interfaces using HTML, CSS, and JavaScript, ensuring a seamless user experience. <br>
+            
+            <b>Controllers & MVC Architecture:</b> Gained hands-on experience working with controllers to manage application flow and integrate frontend with backend logic. <br>
+            
+           <b> Problem-Solving & Debugging:</b> Identified and resolved application bugs, enhancing overall system performance. br
+            
+         <b>Collaboration & Agile Development:</b>    Worked with teams in an agile environment, refining features through continuous feedback and iteration.</p>
+    </div>
+
+
+    <div id="contact" class="container mt-5 content-section">
+        <h4>CONTACT</h4>
+        <div class="contact-links">
+            <p>📩 Email: <a href="mailto:anbulalithagopal@gmail.com">anbulalithagopal@gmail.com</a></p>
+            <p>📱 LinkedIn: <a href="https://www.linkedin.com/in/anbulalitha-gopalakrishnan">Anbulalitha Gopalakrishnan</a></p>
+            <p>💻 GitHub: <a href="https://github.com/Anbulalitha">Anbulalitha</a></p>
+            <p><a href="your-resume.pdf" download>
+                <button type="button" class="btn btn-lg btn-danger" data-bs-toggle="popover" data-bs-title="Download Resume" data-bs-content="Are you sure to Download Resume?" aria-describedby="popover632586">Download Resume</button>
+                <button class="btn btn-primary mt-3">Download Resume</button>
+            </a></p>
+        </div>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => section.style.display = 'none');
+
+            // Show the selected section
+            document.getElementById(sectionId).style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>

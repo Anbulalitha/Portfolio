@@ -10,31 +10,33 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+        <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     
     <style>
-        /* Smooth scrolling */
+      
         html {
             scroll-behavior: smooth;
         }
 
-        /* Navbar styling */
+     
         .navbar {
-            background: #2C3E50;
+            background:black;
         }
 
         .navbar-brand {
             color: #FFF;
             font-weight: bold;
         }
-
+.navbar-brand:hover {
+  color: #fff !important;
+}
         .nav-link {
             color: #FFF !important;
             font-size: 18px;
             transition: 0.3s;
         }
 
-        
-        /* Section styling */
+      
         .content-section {
             display: none;
             padding: 60px;
@@ -43,35 +45,17 @@
         }
 
         h2, h4 {
-            color: #2C3E50;
+            
             font-weight: bold;
         }
 
-        /* #about { background: #D5F5E3; } */
-            /* #skill {  background: #F4F6F7;}
-            #project { background: #D5F5E3; }
-            #experience {  background: #F4F6F7; }
-            #contact {background: #D5F5E3; } */
-
-        /* Buttons */
-        .btn-primary {
-            background: #2980B9;
-            border: none;
-        }
-
-        .btn-primary:hover {
-            background:#D5F5E3;
-        }
-
-        /* Contact Styling */
-        .contact-links a {
+               .contact-links a {
             text-decoration: none;
             font-size: 18px;
             color: #502c33;
         }
-   .nav-tabs {
-  border-bottom: none; /* Remove default underline line */
-}
+
+  
 
 .nav-tabs .nav-link {
   border: none;
@@ -80,25 +64,46 @@
   color: black;
   transition: border-color 0.3s ease;
 }
-
-.nav-tabs .nav-link {
-    color: #000 !important; /* Force black text */
+.nav-tabs{
+    border: none;
 }
+.nav-tabs .nav-link {
+    color: #000 !important; 
+}
+
 
 .nav-tabs .nav-link.active {
-    color: #000 !important; /* Ensure active tab is also black */
+    border-bottom: 3px solid #000 !important;;
+    font-weight: bold;
 }
 
-.nav-tabs .nav-link:hover {
-    color: #000 !important; /* Keep it black on hover */
-}
+
+
 
 .input-small {
   width: 100%;
-  max-width: 400px; /* You can decrease this */
+  max-width: 400px; 
   margin: 0 auto;
 }
+ul.diamond-list {
+  list-style-type: none;
+  padding-left: 0;
+}
 
+ul.diamond-list li::before {
+  content: "♦";
+ 
+  font-size: 1rem;
+  padding-right: 10px;
+}
+.navbar .navbar-toggler {
+  background-color: #fff !important;
+  border-color: #ccc;
+}
+
+.navbar .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='black' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
     </style>
 </head>
 <body>
@@ -134,19 +139,19 @@
     </nav>
 
     <!-- Sections -->
-    <div id="about" class="container mt-5 content-section">
-        <img src="./image.png" alt="Profile Picture" class="img-fluid rounded-circle mx-auto d-block" style="width: 50%;">
-   
-       
-      <p>Hi, I’m <b>Anbulalitha Gopalakrishanan</b><br>
-   I'm a <b>Full-Stack Developer</b></p>
+    <div id="about" class="container mt-5 content-section" > 
+    <img src="./image.png" alt="Profile Picture" class="img-fluid rounded-circle mx-auto d-block" style="width: 30%; margin-top: -110px;">
+  <div class=" text-center">
+     <p>Hi, I’m <b>Anbulalitha Gopalakrishanan</b> – <i>Full-Stack Developer</i></p>
+
+      </div>
 <p>I’m a dedicated .NET Developer specializing in C#, with hands-on experience in both front-end and back-end development. On the back-end, I work with ASP.NET Core MVC and Web API, leveraging C# as my core programming language to build scalable and efficient systems. On the front-end, I use HTML, CSS, JavaScript, and React to craft engaging, responsive user experiences. I approach each project with creativity and technical precision, delivering clean, maintainable, and high-performance solutions.</p>
 
             </div>
             
 
    <div id="skill" class="container mt-5 content-section">
- 
+  <h4 class="mb-4">SKILLS</h4>
     <!-- Tabs navigation -->
     <ul class="nav nav-tabs justify-content-start" id="skillTabs" role="tablist">
         <li >
@@ -164,15 +169,15 @@
     <div class="tab-content mt-4" id="skillTabContent">
         <div class="tab-pane fade show active" id="technical"  role="tabpanel">
            <h5 class="mt-4 text-decoration-underline">Front-End Development</h5>
-<ul>
+<ul class="diamond-list">
   <li>HTML5 & CSS3</li>
-  <li>JavaScript (ES6+)</li>
+  <li>JavaScript </li>
   <li>React.js</li>
   <li>Bootstrap</li>
 </ul>
 
 <h5 class="mt-4 text-decoration-underline">Back-End Development</h5>
-<ul>
+<ul class="diamond-list">
   <li>C# Programming </li>
   <li>ASP.NET Core MVC</li>
   <li>RESTful APIs</li>
@@ -180,7 +185,7 @@
 
         </div>
         <div class="tab-pane fade" id="education" role="tabpanel">
-            <ul>
+            <ul class="diamond-list">
                 <li><b>Karunya Vidhya Bhavan Matriculation School</b>
                     <br>
                      SSLC-85%(2018)</li>
@@ -194,7 +199,7 @@
             </ul>
         </div>
         <div class="tab-pane fade" id="soft" role="tabpanel">
-    <ul>
+    <ul class="diamond-list">
         <li><b>Learning & Adaptability</b> <br>Embracing new challenges and quickly mastering evolving technologies</li>
         <li><b>Collaboration</b> <br>Working effectively within diverse teams to achieve shared goals</li>
         <li><b>Communication</b><br> Expressing ideas clearly and actively listening for strong interpersonal dynamics</li>
@@ -205,71 +210,79 @@
 </div>
 
 
-    <div id="project" class="container mt-5 content-section">
-        <b>Employee Management System:</b> <br>
+  <div id="project" class="container mt-5 content-section">
+    <h4 class="mb-4">PROJECT</h4>
+
+    <h5><b>Employee Management System</b></h5>
+    <p>
         A comprehensive system developed to streamline employee management, salary processing, attendance tracking, and information handling. This project ensures efficiency, security, and effective data-driven decision-making.
-        <br><br>
-       <b>Key Features:</b> <br>
-        ✅ Secure Login System – Robust authentication to protect sensitive employee data.<br>
-         ✅ Employee Details Management – Store and manage personnel records efficiently. <br>
-         ✅ Payroll Processing – Automated salary calculations with integrated payment tracking. <br>
-         ✅ Attendance Tracking – Maintain records of employee attendance and leave status. <br>
-         ✅ RDLC Reports Integration – Generate detailed reports for employee information, payroll, and attendance, enabling seamless analysis.<br> ✅ Information Management – Centralized system for handling employee-related data, ensuring structured and organized workflow.<br><br>
-        
-       
-       <b>Technologies Used:</b>  <br>
-        💻<b> Web Forms</b> – User-friendly interface for streamlined operations.
-        <br> ⚙️<b> .NET & C#</b> – Backend development ensuring performance and security.
-        <br> 📊 <b>SQL Database</b> – Efficient data storage and retrieval for employee records<br>
-        <!-- <button class="btn btn-primary mt-3">View Project</button> -->
-        <a href="https://github.com/Anbulalitha/EMP-system" target="_blank">
-            <button class="btn btn-primary mt-3">View Project</button>
-        </a>
-        
-    </div>
+    </p>
 
-    <div id="experience" class="container mt-5 content-section">
-        <h4>EXPERIENCE</h4>
-       
-        <p>During my time as a .NET Developer, I had the opportunity to work extensively with ASP.NET, where I developed a full-fledged project integrating PL/SQL databases, HTML, CSS, and JavaScript. This experience allowed me to strengthen my technical expertise while gaining a deeper understanding of controllers, data management, and application logic.
-<br>
-            <b>Key Contributions & Learnings:</b><br>
-           <b>ASP.NET Development:</b>  Built and maintained a robust web application using the ASP.NET framework. <br>
-            
-          <b>PL/SQL Integration:</b>   Designed and implemented database structures, optimized queries, and managed data efficiently. <br>
-            
-          <b> Frontend Technologies:</b>  Developed dynamic user interfaces using HTML, CSS, and JavaScript, ensuring a seamless user experience. <br>
-            
-            <b>Controllers & MVC Architecture:</b> Gained hands-on experience working with controllers to manage application flow and integrate frontend with backend logic. <br>
-            
-           <b> Problem-Solving & Debugging:</b> Identified and resolved application bugs, enhancing overall system performance. br
-            
-         <b>Collaboration & Agile Development:</b>    Worked with teams in an agile environment, refining features through continuous feedback and iteration.</p>
-    </div>
+    <h6><b>Key Features:</b></h6>
+    <ul class="diamond-list">
+        <li> <b>Secure Login System:</b> Robust authentication to protect sensitive employee data.</li>
+        <li><b>Employee Details Management:</b> Efficient storage and management of personnel records.</li>
+        <li> <b>Payroll Processing:</b> Automated salary calculations with integrated payment tracking.</li>
+        <li> <b>Attendance Tracking:</b> Maintain records of employee attendance and leave status.</li>
+        <li> <b>RDLC Reports Integration:</b> Generate detailed reports for payroll, attendance, and employee information.</li>
+        <li><b>Information Management:</b> Centralized system for structured and organized data handling.</li>
+    </ul>
+
+    <h6 class="mt-4"><b>Technologies Used:</b></h6>
+    <ul class="diamond-list">
+        <li> <b>Web Forms:</b> User-friendly interface for streamlined operations.</li>
+        <li> <b>.NET & C#:</b> Backend development ensuring performance and security.</li>
+        <li> <b>SQL Database:</b> Efficient data storage and retrieval for employee records.</li>
+    </ul>
+
+    <a href="https://github.com/Anbulalitha/EMP-system" target="_blank">
+        <button class="btn btn-dark mt-3">View Project</button>
+    </a>
+</div>
 
 
-   <div id="contact" class="container mt-5 content-section">
-    <div class="contact-links  mb-4">
-        <a href="mailto:anbulalithagopal@gmail.com" target="_blank" class="m-2 text-dark fs-4">
+   <div id="experience" class="container mt-5 content-section">
+    <h4 class="mb-4">EXPERIENCE</h4>
+    <p>
+        As a passionate .NET Developer, I’ve led the development of a full-stack application integrating <b>ASP.NET Core</b> with <b>PL/SQL databases</b>, complemented by responsive front-end components using <b>HTML, CSS, and JavaScript</b>. This hands-on experience sharpened my backend logic and broadened my understanding of MVC architecture in real-world scenarios.
+    </p>
+
+    <ul class="diamond-list">
+        <li><b>ASP.NET & MVC Architecture:</b> Engineered a scalable web application using controllers and model-view-controller principles to deliver clean and maintainable code.</li>
+        <li><b>Database Management:</b> Created and optimized PL/SQL schemas and queries for secure, high-performance data transactions.</li>
+        <li><b>Frontend Development:</b> Delivered intuitive user interfaces leveraging semantic HTML, modular CSS, and dynamic JS elements.</li>
+        <li><b>Debugging & Optimization:</b> Proactively diagnosed performance bottlenecks and implemented fixes to ensure a seamless experience.</li>
+        <li><b>Agile Collaboration:</b> Contributed to sprint planning and peer reviews while working closely with cross-functional teams under Agile workflows.</li>
+    </ul>
+</div>
+
+
+
+   <div id="contact" class="container mt-5 content-section ">
+    <h4 class="mb-4">CONTACT</h4>
+
+    <!-- Contact Icons -->
+    <div class="d-flex justify-content-center gap-4 mb-3">
+        <a href="mailto:anbulalithagopal@gmail.com" target="_blank" class="text-dark fs-4">
             <i class="fas fa-envelope"></i>
         </a>
-        <a href="https://www.linkedin.com/in/anbulalitha-gopalakrishnan" target="_blank" class="m-2 text-dark fs-4">
+        <a href="https://www.linkedin.com/in/anbulalitha-gopalakrishnan" target="_blank" class="text-dark fs-4">
             <i class="fab fa-linkedin"></i>
         </a>
-        <a href="https://github.com/Anbulalitha" target="_blank" class="m-2 text-dark fs-4">
+        <a href="https://github.com/Anbulalitha" target="_blank" class="text-dark fs-4">
             <i class="fab fa-github"></i>
         </a>
-        <br>
-        <!-- Smaller Download Button -->
-        <a href="your-resume.pdf" download>
-            <button class="btn btn-outline-danger btn-sm mt-3">
-                <i class="fas fa-download"></i> Download CV
-            </button>
-        </a>
-    </div>
+   
 
-    <!-- Contact Form -->
-    <form>
+    <!-- CV Download -->
+    <a href="your-resume.pdf" download>
+        <button class="btn btn-dark btn-sm">
+            <i class="fas fa-download"></i>  CV
+        </button>
+    </a>
+     </div>
+<br><br>
+    <form action="https://formspree.io/f/your_form_id" method="POST">
         <div class="mb-3">
          
             <input type="text" class="form-control form-control-sm input-small" id="nameInput" placeholder="Enter your name">
@@ -283,23 +296,34 @@
             <textarea  class="form-control form-control-sm input-small" id="messageInput" rows="4" placeholder="Type your message"></textarea>
         </div>
        <div class="text-center mt-3">
-  <button type="submit" class="btn btn-primary">Send</button>
+  <button type="submit" class="btn btn-dark">Send</button>
 </div>
     </form>
+</div>
 </div>
 
 
 
     <script>
-        function showSection(sectionId) {
-            // Hide all sections
-            const sections = document.querySelectorAll('.content-section');
-            sections.forEach(section => section.style.display = 'none');
 
-            // Show the selected section
-            document.getElementById(sectionId).style.display = 'block';
+    function showSection(sectionId) {
+        // Hide all sections
+        const sections = document.querySelectorAll('.content-section');
+        sections.forEach(section => section.style.display = 'none');
+
+        // Show the selected section
+        const targetSection = document.getElementById(sectionId);
+        if (targetSection) {
+            targetSection.style.display = 'block';
         }
-    </script>
+    }
 
+    // Show 'about' section on initial page load
+    window.addEventListener('DOMContentLoaded', () => {
+        showSection('about');
+    });
+</script>
+
+<script src="./script.js"></script>
 </body>
 </html>

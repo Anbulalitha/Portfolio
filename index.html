@@ -938,6 +938,12 @@
                     targetSection.classList.add('show');
                 }, 50);
             }
+
+            // Close mobile menu after clicking
+            const navbarCollapse = document.getElementById('navbarSupportedContent');
+            if (navbarCollapse.classList.contains('show')) {
+                navbarCollapse.classList.remove('show');
+            }
         }
 
         window.addEventListener('DOMContentLoaded', () => {

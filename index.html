@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Anbulaliths's Portfolio</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            min-height: 100vh;
+            background-attachment: fixed;
+        }
+
+        .navbar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .navbar-brand {
+            color: #FFF;
+            font-weight: bold;
+        }
+
+        .navbar-brand:hover {
+            color: #fff !important;
+        }
+
+        .nav-link {
+            color: #FFF !important;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .content-section {
+            display: none;
+            padding: 60px;
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+        }
+
+        h2, h4 {
+            font-weight: bold;
+        }
+
+        .contact-links a {
+            text-decoration: none;
+            font-size: 18px;
+            color: #502c33;
+        }
+
+        .nav-tabs .nav-link {
+            border: none;
+            border-bottom: 3px solid transparent;
+            background-color: white;
+            color: black;
+            transition: border-color 0.3s ease;
+        }
+
+        .nav-tabs {
+            border: none;
+        }
+
+        .nav-tabs .nav-link {
+            color: #000 !important;
+        }
+
+        .nav-tabs .nav-link.active {
+            border-bottom: 3px solid #000 !important;
+            font-weight: bold;
+        }
+
+        .input-small {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        ul.diamond-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        ul.diamond-list li::before {
+            content: "♦";
+            font-size: 1rem;
+            padding-right: 10px;
+        }
+
+        .navbar .navbar-toggler {
+            background-color: #fff !important;
+            border-color: #ccc;
+        }
+
+        .navbar .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='black' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+        }
+
+        .content-section {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .content-section.show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #fff;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .diamond-list li {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .diamond-list li:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-dark {
+            transition: transform 0.2s ease, background-color 0.3s ease;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+        }
+
+        .btn-dark:hover {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+        }
+
+        .btn-outline-dark {
+            border-color: #667eea;
+            color: #667eea;
+        }
+
+        .btn-outline-dark:hover {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-color: #667eea;
+            color: white;
+        }
+
+        .project-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .skill-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            padding: 8px 15px;
+            border-radius: 20px;
+            margin: 5px;
+            font-size: 14px;
+            box-shadow: 0 3px 10px rgba(102, 126, 234, 0.3);
+        }
+
+        .timeline-item {
+            border-left: 3px solid #000;
+            padding-left: 20px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -8px;
+            top: 0;
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            background: #000;
+        }
+
+        .skill-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: scale(1.05);
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .progress-bar-custom {
+            height: 8px;
+            border-radius: 10px;
+            background: #e0e0e0;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+            transition: width 1s ease;
+        }
+
+        .project-card-advanced {
+            position: relative;
+            border-radius: 20px;
+            padding: 0;
+            margin-bottom: 30px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: all 0.4s ease;
+        }
+
+        .project-card-advanced:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+        }
+
+        .project-body {
+            padding: 30px;
+            background: white;
+        }
+
+        .project-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .feature-tag {
+            display: inline-block;
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            padding: 5px 12px;
+            border-radius: 15px;
+            margin: 5px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .cert-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-left: 5px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .cert-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .cert-icon {
+            font-size: 2.5rem;
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .achievement-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .achievement-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .experience-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-top: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .exp-icon-box {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-icon-box {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            margin: 0 auto 20px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-icon-box:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .contact-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .form-control:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">ANBULALITHA GOPALAKRISHNAN</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item mx-3">
+                        <a class="nav-link" href="#" onclick="showSection('about')">About</a>
+                    </li>
+                    <li class="nav-item mx-3">
+                        <a class="nav-link" href="#" onclick="showSection('skill')">Skills</a>
+                    </li>
+                    <li class="nav-item mx-3">
+                        <a class="nav-link" href="#" onclick="showSection('project')">Projects</a>
+                    </li>
+                    <li class="nav-item mx-3">
+                        <a class="nav-link" href="#" onclick="showSection('certifications')">Certifications</a>
+                    </li>
+                    <li class="nav-item mx-3">
+                        <a class="nav-link" href="#" onclick="showSection('experience')">Experience</a>
+                    </li>
+                    <li class="nav-item mx-3">
+                        <a class="nav-link" href="#" onclick="showSection('contact')">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div id="about" class="container mt-5 content-section">
+        <div class="text-center mb-5">
+            <h1 class="display-4 fw-bold mb-3">Hi, I'm <span style="color: #000;">ANBULALITHA GOPALAKRISHNAN</span></h1>
+            <p class="lead fs-3"><i class="fas fa-code"></i> Full-Stack .NET Developer</p>
+            <div class="mt-4">
+                <span class="skill-badge"><i class="fas fa-map-marker-alt"></i> Tamil Nadu, India</span>
+                <span class="skill-badge"><i class="fas fa-graduation-cap"></i> B.Tech IT</span>
+                <span class="skill-badge"><i class="fas fa-briefcase"></i> Open to Opportunities</span>
+            </div>
+        </div>
+
+        <div class="row align-items-center mb-4">
+            <div class="col-md-12">
+                <h4 class="mb-3"><i class="fas fa-user-circle"></i> About Me</h4>
+                <p>I'm a dedicated .NET Developer specializing in C#, with hands-on experience in both front-end and back-end
+                    development. On the back-end, I work with ASP.NET Core MVC and Web API, leveraging C# as my core programming
+                    language to build scalable and efficient systems. On the front-end, I use HTML, CSS, JavaScript, and React
+                    to craft engaging, responsive user experiences. I approach each project with creativity and technical
+                    precision, delivering clean, maintainable, and high-performance solutions.</p>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-md-4 mb-3">
+                <div class="project-card text-center">
+                    <i class="fas fa-laptop-code fa-3x mb-3"></i>
+                    <h5>Full-Stack Development</h5>
+                    <p>Building end-to-end web applications with modern technologies and best practices</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="project-card text-center">
+                    <i class="fas fa-database fa-3x mb-3"></i>
+                    <h5>Database Design</h5>
+                    <p>Designing efficient database schemas and optimizing queries for performance</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class="project-card text-center">
+                    <i class="fas fa-rocket fa-3x mb-3"></i>
+                    <h5>Problem Solving</h5>
+                    <p>Passionate about solving complex problems with elegant and efficient solutions</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-5 text-center">
+            <h5 class="mb-3">Let's Connect</h5>
+            <a href="#" onclick="showSection('contact')" class="btn btn-dark btn-lg">
+                <i class="fas fa-envelope"></i> Get In Touch
+            </a>
+        </div>
+    </div>
+
+    <div id="skill" class="container mt-5 content-section">
+        <h4 class="mb-4 text-center"><i class="fas fa-tools"></i> SKILLS & EXPERTISE</h4>
+        
+        <ul class="nav nav-tabs justify-content-center" id="skillTabs" role="tablist">
+            <li>
+                <button class="nav-link bg-white text-dark border-0 show active" id="technical-tab"
+                    data-bs-toggle="tab" data-bs-target="#technical" role="tab">Technical Skills</button>
+            </li>
+            <li>
+                <button class="nav-link bg-white text-dark border-0" id="education-tab" data-bs-toggle="tab"
+                    data-bs-target="#education" role="tab">Education</button>
+            </li>
+            <li>
+                <button class="nav-link bg-white text-dark border-0" id="soft-tab" data-bs-toggle="tab"
+                    data-bs-target="#soft" role="tab">Soft Skills</button>
+            </li>
+        </ul>
+
+        <div class="tab-content mt-4" id="skillTabContent">
+            <div class="tab-pane fade show active" id="technical" role="tabpanel">
+                <div class="row mt-4">
+                    <div class="col-md-4 mb-3">
+                        <div class="skill-card text-center">
+                            <i class="fab fa-html5 skill-icon"></i>
+                            <h5>Front-End</h5>
+                            <p>HTML5, CSS3, JavaScript, React.js, Bootstrap</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="skill-card text-center" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                            <i class="fas fa-server skill-icon"></i>
+                            <h5>Back-End</h5>
+                            <p>C#, ASP.NET Core MVC, Web API</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="skill-card text-center" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                            <i class="fas fa-database skill-icon"></i>
+                            <h5>Database</h5>
+                            <p>SQL, PL/SQL</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-5">
+                    <h5 class="mb-4">Proficiency Levels</h5>
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between">
+                            <span><i class="fab fa-cuttlefish"></i> C# & .NET Core</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="progress-bar-custom">
+                            <div class="progress-fill" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between">
+                            <span><i class="fas fa-code"></i> ASP.NET MVC</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="progress-bar-custom">
+                            <div class="progress-fill" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between">
+                            <span><i class="fab fa-js"></i> JavaScript & React</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="progress-bar-custom">
+                            <div class="progress-fill" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between">
+                            <span><i class="fas fa-database"></i> SQL Server</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="progress-bar-custom">
+                            <div class="progress-fill" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-pane fade" id="education" role="tabpanel">
+                <div class="row mt-4">
+                    <div class="col-md-12">
+                        <div class="timeline-item">
+                            <h5><b><i class="fas fa-university"></i> Velalar College Of Engineering and Technology</b></h5>
+                            <p class="text-muted">B.Tech Information Technology | 2020-2024</p>
+                            <p><b>CGPA: 89%</b> - Graduated with distinction, recognized for outstanding academic performance</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h5><b><i class="fas fa-school"></i> Kongu Velalar Matriculation Higher Secondary School</b></h5>
+                            <p class="text-muted">Higher Secondary Certificate | 2020</p>
+                            <p><b>Score: 77%</b></p>
+                        </div>
+                        <div class="timeline-item">
+                            <h5><b><i class="fas fa-school"></i> Karunya Vidhya Bhavan Matriculation School</b></h5>
+                            <p class="text-muted">Secondary School Leaving Certificate | 2018</p>
+                            <p><b>Score: 88%</b></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-pane fade" id="soft" role="tabpanel">
+                <div class="row mt-4">
+                    <div class="col-md-4 mb-3">
+                        <div class="project-card text-center">
+                            <i class="fas fa-lightbulb fa-3x mb-3" style="color: #667eea;"></i>
+                            <h5>Learning & Adaptability</h5>
+                            <p>Embracing new challenges and quickly mastering evolving technologies</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="project-card text-center">
+                            <i class="fas fa-users fa-3x mb-3" style="color: #f5576c;"></i>
+                            <h5>Collaboration</h5>
+                            <p>Working effectively within diverse teams to achieve shared goals</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="project-card text-center">
+                            <i class="fas fa-comments fa-3x mb-3" style="color: #4facfe;"></i>
+                            <h5>Communication</h5>
+                            <p>Expressing ideas clearly and actively listening for strong interpersonal dynamics</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="project" class="container mt-5 content-section">
+        <h4 class="mb-5 text-center"><i class="fas fa-project-diagram"></i> FEATURED PROJECTS</h4>
+
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="project-card-advanced">
+                    <div class="project-header">
+                        <i class="fas fa-users-cog project-icon"></i>
+                        <h4><b>Employee Management System</b></h4>
+                        <p class="mb-0">Enterprise HR Management Platform</p>
+                    </div>
+                    <div class="project-body">
+                        <p>Comprehensive HR solution built with ASP.NET Core MVC featuring employee lifecycle management, role-based access control, attendance tracking, and performance analytics.</p>
+                        
+                        <h6 class="mt-3 mb-2"><i class="fas fa-star"></i> Key Features:</h6>
+                        <ul class="diamond-list">
+                            <li>Employee onboarding & offboarding workflows</li>
+                            <li>Role-based authentication & authorization</li>
+                            <li>Real-time attendance tracking system</li>
+                            <li>Performance review & appraisal module</li>
+                            <li>Leave management with approval workflow</li>
+                        </ul>
+
+                        <h6 class="mt-3 mb-2"><i class="fas fa-chart-line"></i> Impact:</h6>
+                        <div class="feature-tag"><i class="fas fa-check"></i> 25% accuracy improvement</div>
+                        <div class="feature-tag"><i class="fas fa-check"></i> Eliminated paper-based processes</div>
+                        <div class="feature-tag"><i class="fas fa-check"></i> Reduced HR workload by 40%</div>
+
+                        <div class="mt-4">
+                            <span class="skill-badge">ASP.NET Core MVC</span>
+                            <span class="skill-badge">C#</span>
+                            <span class="skill-badge">Entity Framework</span>
+                            <span class="skill-badge">SQL Server</span>
+                            <span class="skill-badge">Bootstrap</span>
+                            <span class="skill-badge">JavaScript</span>
+                        </div>
+
+                        <a href="https://github.com/Anbulalitha/EMP-system" target="_blank">
+                            <button class="btn btn-dark mt-3 w-100"><i class="fab fa-github"></i> View on GitHub</button>
+                        </a>
+                        <a href="./projects/emp-demo.html" target="_blank">
+                            <button class="btn btn-outline-dark mt-2 w-100"><i class="fas fa-eye"></i> View Demo</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <div class="project-card-advanced">
+                    <div class="project-header" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        <i class="fas fa-shopping-cart project-icon"></i>
+                        <h4><b>E-Commerce Web Application</b></h4>
+                        <p class="mb-0">Full-Stack Online Shopping Platform</p>
+                    </div>
+                    <div class="project-body">
+                        <p>Modern e-commerce platform built with ASP.NET Core Web API and React, featuring product catalog, shopping cart, secure payment integration, and order management.</p>
+                        
+                        <h6 class="mt-3 mb-2"><i class="fas fa-star"></i> Key Features:</h6>
+                        <ul class="diamond-list">
+                            <li>RESTful API with JWT authentication</li>
+                            <li>Product search & filtering with pagination</li>
+                            <li>Shopping cart & wishlist functionality</li>
+                            <li>Secure payment gateway integration</li>
+                            <li>Order tracking & invoice generation</li>
+                        </ul>
+
+                        <h6 class="mt-3 mb-2"><i class="fas fa-chart-line"></i> Technical Highlights:</h6>
+                        <div class="feature-tag"><i class="fas fa-check"></i> Microservices architecture</div>
+                        <div class="feature-tag"><i class="fas fa-check"></i> Redis caching</div>
+                        <div class="feature-tag"><i class="fas fa-check"></i> Responsive React UI</div>
+
+                        <div class="mt-4">
+                            <span class="skill-badge">ASP.NET Web API</span>
+                            <span class="skill-badge">React.js</span>
+                            <span class="skill-badge">C#</span>
+                            <span class="skill-badge">SQL Server</span>
+                            <span class="skill-badge">Redis</span>
+                            <span class="skill-badge">JWT</span>
+                        </div>
+
+                        <button class="btn btn-dark mt-3 w-100" disabled><i class="fas fa-lock"></i> Private Repository</button>
+                        <a href="./projects/ecommerce-demo.html" target="_blank">
+                            <button class="btn btn-outline-dark mt-2 w-100"><i class="fas fa-eye"></i> View Demo</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="certifications" class="container mt-5 content-section">
+        <h4 class="mb-5 text-center"><i class="fas fa-certificate"></i> CERTIFICATIONS & ACHIEVEMENTS</h4>
+        
+        <div class="row">
+            <div class="col-md-6">
+                <h5 class="mb-4"><i class="fas fa-award"></i> Certifications</h5>
+                
+                <div class="cert-card">
+                    <i class="fas fa-brain cert-icon"></i>
+                    <h5><b>Prompt Engineering</b></h5>
+                    <p class="text-muted mb-2"><i class="fas fa-building"></i> Great Learning</p>
+                    <p>Completed comprehensive training in AI prompt engineering, covering techniques for effective communication with large language models and optimization strategies.</p>
+                    <span class="skill-badge">AI</span>
+                    <span class="skill-badge">LLM</span>
+                    <span class="skill-badge">ChatGPT</span>
+                </div>
+
+                <div class="cert-card" style="border-left-color: #f5576c;">
+                    <i class="fas fa-code-branch cert-icon" style="color: #f5576c;"></i>
+                    <h5><b>Basics of Data Structures & Algorithms</b></h5>
+                    <p class="text-muted mb-2"><i class="fas fa-building"></i> Coursera</p>
+                    <p>Mastered fundamental concepts of DSA including arrays, linked lists, stacks, queues, sorting algorithms, and problem-solving techniques.</p>
+                    <span class="skill-badge">DSA</span>
+                    <span class="skill-badge">Algorithms</span>
+                    <span class="skill-badge">Problem Solving</span>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <h5 class="mb-4"><i class="fas fa-trophy"></i> Achievements</h5>
+                
+                <div class="achievement-card">
+                    <i class="fas fa-user-tie fa-3x mb-3"></i>
+                    <h5><b>Executive Member</b></h5>
+                    <p class="mb-2"><i class="fas fa-calendar"></i> 2020 - 2024</p>
+                    <p>Served as an executive member, leading initiatives, organizing events, and contributing to strategic planning and decision-making processes.</p>
+                    <div class="mt-3">
+                        <span class="badge bg-light text-dark">Leadership</span>
+                        <span class="badge bg-light text-dark">Team Management</span>
+                        <span class="badge bg-light text-dark">Event Planning</span>
+                    </div>
+                </div>
+
+                <div class="achievement-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                    <i class="fas fa-lightbulb fa-3x mb-3"></i>
+                    <h5><b>EDC Member</b></h5>
+                    <p class="mb-2"><i class="fas fa-calendar"></i> 2020 - 2023</p>
+                    <p>Active member of Entrepreneurship Development Cell, participating in workshops, startup events, and innovation challenges to foster entrepreneurial mindset.</p>
+                    <div class="mt-3">
+                        <span class="badge bg-light text-dark">Entrepreneurship</span>
+                        <span class="badge bg-light text-dark">Innovation</span>
+                        <span class="badge bg-light text-dark">Networking</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="experience" class="container mt-5 content-section">
+        <h4 class="mb-5 text-center"><i class="fas fa-briefcase"></i> PROFESSIONAL EXPERIENCE</h4>
+        
+        <div class="text-center mb-5">
+            <h5><b>MACOM</b></h5>
+            <p class="text-muted"><i class="fas fa-calendar"></i> October 2024 - Present</p>
+            <p class="lead">Working as a .NET Developer, building enterprise applications with ASP.NET Core MVC and C#, integrated with PL/SQL databases and responsive front-end components.</p>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="experience-card">
+                    <div class="exp-icon-box">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h5><b>.NET Development</b></h5>
+                    <p>Developing enterprise applications using ASP.NET Core MVC and C# with focus on scalable architecture and clean code practices.</p>
+                    <div class="mt-3">
+                        <span class="feature-tag">ASP.NET MVC</span>
+                        <span class="feature-tag">C#</span>
+                        <span class="feature-tag">.NET Core</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <div class="experience-card" style="border-top-color: #f5576c;">
+                    <div class="exp-icon-box" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h5><b>Database Engineering</b></h5>
+                    <p>Optimized PL/SQL schemas with partitioning, stored procedures, and query tuning using execution plans for high-volume transactions.</p>
+                    <div class="mt-3">
+                        <span class="feature-tag">PL/SQL</span>
+                        <span class="feature-tag">SQL</span>
+                        <span class="feature-tag">Optimization</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <div class="experience-card" style="border-top-color: #4facfe;">
+                    <div class="exp-icon-box" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h5><b>Frontend Engineering</b></h5>
+                    <p>Delivered responsive, accessible UIs leveraging semantic HTML, modular CSS, and dynamic JS with reusable components.</p>
+                    <div class="mt-3">
+                        <span class="feature-tag">HTML5</span>
+                        <span class="feature-tag">CSS3</span>
+                        <span class="feature-tag">JavaScript</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <div class="experience-card" style="border-top-color: #fa709a;">
+                    <div class="exp-icon-box" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                        <i class="fas fa-bug"></i>
+                    </div>
+                    <h5><b>Bug Fixing & Debugging</b></h5>
+                    <p>Identified and resolved critical bugs in projects, improving application stability and user experience through systematic debugging and testing.</p>
+                    <div class="mt-3">
+                        <span class="feature-tag">Debugging</span>
+                        <span class="feature-tag">Testing</span>
+                        <span class="feature-tag">Problem Solving</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="contact" class="container mt-5 content-section">
+        <h4 class="mb-5 text-center"><i class="fas fa-envelope"></i> GET IN TOUCH</h4>
+
+        <div class="text-center mb-5">
+            <p class="lead">Feel free to reach out for collaborations, opportunities, or just a friendly chat!</p>
+        </div>
+
+        <div class="row mb-5">
+            <div class="col-md-4 mb-4">
+                <div class="contact-card">
+                    <div class="contact-icon-box">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h5><b>Email</b></h5>
+                    <p class="text-muted">anbulalithagopal@gmail.com</p>
+                    <a href="mailto:anbulalithagopal@gmail.com" class="btn btn-outline-dark btn-sm">
+                        <i class="fas fa-paper-plane"></i> Send Email
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="contact-card">
+                    <div class="contact-icon-box" style="background: linear-gradient(135deg, #0077b5 0%, #00a0dc 100%);">
+                        <i class="fab fa-linkedin"></i>
+                    </div>
+                    <h5><b>LinkedIn</b></h5>
+                    <p class="text-muted">Connect with me professionally</p>
+                    <a href="https://www.linkedin.com/in/anbulalitha-gopalakrishnan" target="_blank" class="btn btn-outline-dark btn-sm">
+                        <i class="fab fa-linkedin"></i> View Profile
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="contact-card">
+                    <div class="contact-icon-box" style="background: linear-gradient(135deg, #333 0%, #000 100%);">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <h5><b>GitHub</b></h5>
+                    <p class="text-muted">Check out my projects</p>
+                    <a href="https://github.com/Anbulalitha" target="_blank" class="btn btn-outline-dark btn-sm">
+                        <i class="fab fa-github"></i> View Repositories
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <div class="experience-card">
+                    <h5 class="text-center mb-4"><i class="fas fa-paper-plane"></i> Send Me a Message</h5>
+                    <div id="successMessage" class="alert alert-success" style="display: none;">
+                        <i class="fas fa-check-circle"></i> Message sent successfully! I'll get back to you soon.
+                    </div>
+                    <form id="contactForm" action="https://formspree.io/f/mwvnzyon" method="POST">
+                        <div class="mb-3">
+                            <label for="nameInput" class="form-label">Your Name</label>
+                            <input type="text" class="form-control" id="nameInput" name="name" placeholder="Enter your name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="emailInput" class="form-label">Your Email</label>
+                            <input type="email" class="form-control" id="emailInput" name="_replyto" placeholder="Enter your email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="messageInput" class="form-label">Message</label>
+                            <textarea class="form-control" id="messageInput" name="message" rows="5" placeholder="Type your message here..." required></textarea>
+                        </div>
+                        <input type="hidden" name="_subject" value="New message from Portfolio">
+<!--  -->                        <div class="text-center">
+                            <button type="submit" class="btn btn-dark btn-lg">
+                                <i class="fas fa-paper-plane"></i> Send Message
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="text-center mt-4">
+                    <a href="your-resume.pdf" download class="btn btn-outline-dark">
+                        <i class="fas fa-download"></i> Download CV
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => {
+                section.classList.remove('show');
+                section.style.display = 'none';
+            });
+
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.style.display = 'block';
+                setTimeout(() => {
+                    targetSection.classList.add('show');
+                }, 50);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            showSection('about');
+        });
+
+        // Handle form submission
+        const form = document.getElementById('contactForm');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const formData = new FormData(form);
+                
+                fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                }).then(response => {
+                    if (response.ok) {
+                        document.getElementById('successMessage').style.display = 'block';
+                        form.reset();
+                        setTimeout(() => {
+                            document.getElementById('successMessage').style.display = 'none';
+                        }, 5000);
+                    }
+                }).catch(error => {
+                    alert('Error sending message. Please try again.');
+                });
+            });
+        }
+    </script>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>
